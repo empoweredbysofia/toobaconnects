@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tooba Connects — well-being speaker, workshop facilitator and people connector creating meaningful community experiences in Derby and beyond.">
+  <title>Tooba Connects | Well-being Speaker & People Connector</title>
+  <style>
+    :root{
+      --pink:#f35f8d;
+      --pink-dark:#d94978;
+      --yellow:#f5b62f;
+      --mint:#6fcdbb;
+      --lavender:#c68de0;
+      --blue:#71bcef;
+      --ink:#252525;
+      --muted:#686868;
+      --paper:#fffdfa;
+      --soft:#fff6f9;
+      --line:#eee2e6;
+      --shadow:0 18px 48px rgba(64,39,49,.10);
+      --radius:28px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color:var(--ink);
+      background:#fff;
+      line-height:1.62;
+    }
+    img{display:block;max-width:100%}
+    a{color:inherit}
+    .container{width:min(1180px,92vw);margin:0 auto}
+
+    header{
+      position:sticky;top:0;z-index:100;
+      background:rgba(255,255,255,.95);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid rgba(243,95,141,.30);
+    }
+    .nav{min-height:88px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand img{width:205px;height:auto}
+    nav{display:flex;align-items:center;gap:28px}
+    nav a{text-decoration:none;font-weight:700}
+    nav a:hover{color:var(--pink-dark)}
+    .nav-cta{
+      padding:11px 18px;border-radius:999px;background:var(--pink);color:#fff;text-decoration:none
+    }
+    .nav-cta:hover{background:var(--pink-dark);color:#fff}
+    .menu-btn{display:none;border:0;background:transparent;font-size:28px;cursor:pointer}
+
+    .hero{padding:68px 0 54px;overflow:hidden;background:linear-gradient(180deg,#fff 0%,#fffafc 100%)}
+    .hero-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:54px;align-items:center}
+    .eyebrow{
+      display:inline-flex;padding:8px 14px;border-radius:999px;
+      background:#fff0f5;color:var(--pink-dark);font-size:.92rem;font-weight:850
+    }
+    h1{
+      font-size:clamp(3.1rem,6vw,5.9rem);
+      line-height:.96;letter-spacing:-.055em;margin:20px 0 24px
+    }
+    .hero h1 .line2{display:block;color:var(--pink)}
+    .hero p{font-size:1.22rem;color:#474747;max-width:620px}
+    .actions{display:flex;gap:13px;flex-wrap:wrap;margin:30px 0 34px}
+    .btn{
+      display:inline-flex;justify-content:center;align-items:center;gap:8px;
+      padding:14px 22px;border-radius:999px;font-weight:800;text-decoration:none;
+      border:2px solid transparent;cursor:pointer;font:inherit
+    }
+    .btn-primary{background:var(--pink);color:#fff}
+    .btn-primary:hover{background:var(--pink-dark)}
+    .btn-secondary{border-color:#eadde2;background:white}
+    .hero-tags{display:flex;flex-wrap:wrap;gap:10px}
+    .hero-tags span{
+      padding:9px 12px;border-radius:999px;background:white;border:1px solid var(--line);
+      font-weight:700;font-size:.92rem
+    }
+
+    .hero-photo-wrap{position:relative;padding:26px 10px 22px 30px}
+    .hero-photo-wrap:before{
+      content:"";position:absolute;inset:0 7% 4% 0;border:2px solid var(--pink);
+      border-radius:44% 56% 40% 60%/54% 42% 58% 46%
+    }
+    .hero-photo{
+      position:relative;z-index:2;width:100%;aspect-ratio:4/3;
+      object-fit:cover;object-position:50% 48%;
+      border-radius:42% 58% 36% 64%/48% 42% 58% 52%;
+      box-shadow:var(--shadow)
+    }
+    .orb{position:absolute;border-radius:50%;opacity:.52;z-index:3}
+    .orb.one{width:90px;height:90px;background:var(--lavender);right:-8px;top:-7px}
+    .orb.two{width:145px;height:145px;background:var(--mint);right:-70px;bottom:12px}
+
+    section{padding:78px 0}
+    .section-title{max-width:790px;margin:0 auto 38px;text-align:center}
+    .section-title h2{font-size:clamp(2.2rem,4vw,3.5rem);line-height:1.02;letter-spacing:-.04em;margin:0 0 12px}
+    .section-title p{font-size:1.1rem;color:var(--muted);margin:0}
+    .tooba-word span:nth-child(1){color:var(--blue)}
+    .tooba-word span:nth-child(2){color:var(--yellow)}
+    .tooba-word span:nth-child(3){color:var(--pink)}
+    .tooba-word span:nth-child(4){color:var(--lavender)}
+    .tooba-word span:nth-child(5){color:var(--mint)}
+
+    .about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:42px;align-items:center}
+    .about-image{
+      width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 35%;
+      border-radius:30px;box-shadow:var(--shadow)
+    }
+    .about-copy h2{font-size:clamp(2.2rem,4vw,3.4rem);letter-spacing:-.04em;margin:0 0 18px}
+    .about-copy p{color:#555;font-size:1.06rem}
+    .mini-proof{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:24px}
+    .mini-proof div{padding:15px;border-radius:18px;background:#fff8fa;border:1px solid #f5dfe7}
+    .mini-proof strong{display:block;font-size:1rem}
+    .mini-proof span{font-size:.9rem;color:#777}
+
+    .services{background:var(--paper)}
+    .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .card{
+      background:white;border:1px solid var(--line);border-radius:var(--radius);
+      padding:28px;box-shadow:var(--shadow)
+    }
+    .service-icon{
+      width:60px;height:60px;border-radius:18px;display:grid;place-items:center;
+      font-size:28px;margin-bottom:18px
+    }
+    .services-grid .card:nth-child(1) .service-icon{background:#ffe9f0}
+    .services-grid .card:nth-child(2) .service-icon{background:#fff2cf}
+    .services-grid .card:nth-child(3) .service-icon{background:#dff5f1}
+    .card h3{font-size:1.35rem;margin:0 0 9px}
+    .card p{margin:0 0 18px;color:var(--muted)}
+    .text-link{font-weight:850;color:var(--pink-dark);text-decoration:none}
+
+    .impact-section{background:linear-gradient(135deg,#fff6fa,#fffdf8)}
+    .impact-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:24px;align-items:stretch}
+    .impact-copy{padding:14px 12px}
+    .impact-copy h2{font-size:clamp(2.3rem,4vw,3.6rem);line-height:1.03;letter-spacing:-.04em;margin:0 0 16px}
+    .impact-copy p{font-size:1.08rem;color:#5f5f5f}
+    .impact-photo{
+      width:100%;height:100%;min-height:440px;object-fit:cover;object-position:center;
+      border-radius:30px;box-shadow:var(--shadow)
+    }
+
+    .gallery{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}
+    .gallery-left,.gallery-right{display:grid;gap:18px}
+    .gallery figure{margin:0;overflow:hidden;border-radius:25px;background:white;box-shadow:var(--shadow)}
+    .gallery img{width:100%;height:100%;object-fit:cover}
+    .gallery .wide{aspect-ratio:16/9}
+    .gallery .tall{aspect-ratio:4/5}
+    .gallery figcaption{padding:12px 16px;color:#666;font-size:.93rem}
+
+    .commission-band{
+      background:var(--ink);color:#fff;border-radius:32px;padding:38px;
+      display:grid;grid-template-columns:1fr auto;gap:22px;align-items:center
+    }
+    .commission-band h2{margin:0 0 8px;font-size:clamp(2rem,4vw,3.1rem);letter-spacing:-.04em}
+    .commission-band p{margin:0;color:#e6e6e6;max-width:780px}
+
+    .booking-card{
+      display:grid;grid-template-columns:.7fr 1.3fr;gap:40px;
+      background:#fff;border:1px solid var(--line);border-radius:32px;padding:38px;
+      box-shadow:var(--shadow)
+    }
+    .booking-copy h2{font-size:clamp(2.3rem,4vw,3.5rem);line-height:1.04;margin:0 0 18px}
+    .booking-copy p{color:#5f5f5f}
+    .contact-list{display:grid;gap:13px;margin-top:26px}
+    .contact-list a{text-decoration:none}
+    form{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .field{display:grid;gap:7px}
+    .field.full{grid-column:1/-1}
+    label{font-size:.9rem;font-weight:750}
+    input,select,textarea{
+      width:100%;border:1px solid #ddd6d9;border-radius:12px;
+      padding:14px;font:inherit;background:#fff
+    }
+    input:focus,select:focus,textarea:focus{
+      outline:3px solid #ffd7e4;border-color:var(--pink)
+    }
+    textarea{min-height:126px;resize:vertical}
+    .submit{grid-column:1/-1;width:100%;border:0}
+    .form-note{grid-column:1/-1;color:#777;font-size:.88rem;margin:0}
+    .direct-email{
+      display:inline-flex;margin-top:13px;font-weight:800;color:var(--pink-dark);text-decoration:none
+    }
+
+    footer{margin-top:70px;background:#ffeef4;padding:28px 0}
+    .footer-row{display:flex;justify-content:space-between;gap:20px;align-items:center}
+    .socials{display:flex;gap:10px}
+    .socials a{
+      width:40px;height:40px;border-radius:50%;display:grid;place-items:center;
+      background:var(--pink);color:white;text-decoration:none;font-weight:850
+    }
+
+    .mobile-book{
+      display:none;position:fixed;left:14px;right:14px;bottom:14px;z-index:120;
+      background:var(--pink);color:#fff;text-align:center;text-decoration:none;
+      padding:14px 18px;border-radius:999px;font-weight:850;
+      box-shadow:0 12px 34px rgba(243,95,141,.34)
+    }
+
+    @media(max-width:900px){
+      .hero-grid,.about-grid,.impact-grid,.booking-card,.gallery{grid-template-columns:1fr}
+      .services-grid{grid-template-columns:1fr}
+      .mini-proof{grid-template-columns:1fr 1fr 1fr}
+      nav{
+        display:none;position:absolute;left:0;right:0;top:88px;background:#fff;
+        padding:22px 4vw;flex-direction:column;align-items:flex-start;border-bottom:1px solid var(--line)
+      }
+      nav.open{display:flex}
+      .menu-btn{display:block}
+      .nav-cta{display:inline-flex}
+      .gallery .tall{aspect-ratio:16/11}
+      .commission-band{grid-template-columns:1fr}
+    }
+    @media(max-width:620px){
+      .nav{min-height:78px}
+      .brand img{width:165px}
+      nav{top:78px}
+      .hero{padding-top:38px}
+      .hero-photo{aspect-ratio:4/3}
+      .mini-proof{grid-template-columns:1fr}
+      .booking-card,.commission-band{padding:24px}
+      form{grid-template-columns:1fr}
+      .field.full,.submit,.form-note{grid-column:1}
+      .footer-row{flex-direction:column;text-align:center;padding-bottom:60px}
+      .mobile-book{display:block}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="Tooba Connects home">
+        <img src="assets/tooba-connects-logo.png" alt="Tooba Connects — Well-being Speaker and People Connector">
+      </a>
+      <button class="menu-btn" aria-label="Open menu" aria-expanded="false">☰</button>
+      <nav id="mainNav" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#gallery">In Action</a>
+        <a href="#contact">Contact</a>
+        <a class="nav-cta" href="#contact">Book Tooba</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Well-being • Connection • Community</span>
+          <h1>Well-being. Connection.<span class="line2">Meaningful impact.</span></h1>
+          <p>Tooba is a well-being speaker and people connector bringing communities together through engaging talks, workshops and meaningful events.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="#contact">Book Tooba</a>
+            <a class="btn btn-secondary" href="#gallery">See Tooba in action</a>
+          </div>
+          <div class="hero-tags">
+            <span>Speaking</span>
+            <span>Workshops</span>
+            <span>Community events</span>
+          </div>
+        </div>
+
+        <div class="hero-photo-wrap">
+          <img class="hero-photo" src="assets/tooba-event-4.jpg" alt="Tooba speaking at a community event">
+          <span class="orb one" aria-hidden="true"></span>
+          <span class="orb two" aria-hidden="true"></span>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container about-grid">
+        <div>
+          <img class="about-image" src="assets/tooba-event-1.jpg" alt="Tooba delivering a presentation to a community audience">
+        </div>
+        <div class="about-copy">
+          <h2>Meet <span class="tooba-word"><span>T</span><span>o</span><span>o</span><span>b</span><span>a</span></span></h2>
+          <p>Tooba Connects is built around one simple idea: people thrive when they feel seen, heard and connected. Through speaking, workshops and community events, Tooba creates welcoming spaces where people can engage with important conversations around well-being, resilience, connection and personal growth.</p>
+          <p>Her approach is warm, relatable and people-centred, with sessions shaped around the audience in the room rather than a one-size-fits-all format. Whether the setting is a community gathering, organisational event or focused workshop, the aim is always the same: meaningful participation and lasting impact.</p>
+          <div class="mini-proof" aria-label="Approach">
+            <div><strong>Warm</strong><span>Accessible delivery</span></div>
+            <div><strong>Relevant</strong><span>Tailored to the audience</span></div>
+            <div><strong>Connected</strong><span>People-first experiences</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="services" id="services">
+      <div class="container">
+        <div class="section-title">
+          <h2>What you can book</h2>
+          <p>Flexible support for organisations, community groups and events.</p>
+        </div>
+        <div class="services-grid">
+          <article class="card">
+            <div class="service-icon">🎙️</div>
+            <h3>Speaking</h3>
+            <p>Engaging talks exploring well-being, resilience, connection, confidence and personal growth.</p>
+            <a class="text-link" href="#contact" data-event="Speaking Engagement">Enquire about speaking →</a>
+          </article>
+          <article class="card">
+            <div class="service-icon">👥</div>
+            <h3>Workshops</h3>
+            <p>Interactive sessions designed around your audience, organisation and the outcomes you want to create.</p>
+            <a class="text-link" href="#contact" data-event="Workshop">Enquire about a workshop →</a>
+          </article>
+          <article class="card">
+            <div class="service-icon">🌍</div>
+            <h3>Community Events</h3>
+            <p>Support with bringing people together, encouraging participation and creating purposeful shared experiences.</p>
+            <a class="text-link" href="#contact" data-event="Community Event">Enquire about an event →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="impact-section">
+      <div class="container impact-grid">
+        <div class="impact-copy">
+          <span class="eyebrow">Connection in action</span>
+          <h2>Creating spaces where people feel part of the conversation.</h2>
+          <p>From community conversations to well-being workshops and collaborative events, Tooba’s work is centred on making people feel welcomed, involved and able to contribute.</p>
+          <p>The focus is not simply on delivering information. It is on creating connection, opening conversation and helping people leave with something meaningful to take forward.</p>
+          <a class="btn btn-primary" href="#contact">Start a booking enquiry</a>
+        </div>
+        <img class="impact-photo" src="assets/tooba-event-2.jpg" alt="Community audience listening during a presentation">
+      </div>
+    </section>
+
+    <section id="gallery">
+      <div class="container">
+        <div class="section-title">
+          <h2>Tooba in action</h2>
+          <p>Real community conversations, presentations and events.</p>
+        </div>
+        <div class="gallery">
+          <div class="gallery-left">
+            <figure>
+              <img class="wide" src="assets/tooba-event-3.jpg" alt="Large community event with attendees seated around tables">
+              <figcaption>Bringing people together in welcoming, purposeful spaces.</figcaption>
+            </figure>
+          </div>
+          <div class="gallery-right">
+            <figure>
+              <img class="tall" src="assets/tooba-event-4.jpg" alt="Tooba speaking beside community information displays">
+              <figcaption>Approachable delivery designed around the people in the room.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="commission-band">
+          <div>
+            <h2>Looking for a speaker, workshop facilitator or community connector?</h2>
+            <p>Tell Tooba about your organisation, audience and what you would like people to take away from the experience.</p>
+          </div>
+          <a class="btn btn-primary" href="#contact">Start an enquiry</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="booking-card">
+          <div class="booking-copy">
+            <h2>Book <span class="tooba-word"><span>T</span><span>o</span><span>o</span><span>b</span><span>a</span></span></h2>
+            <p>Complete the form and your device will open a ready-to-send email addressed to Tooba Connects with all of your booking details included.</p>
+            <div class="contact-list">
+              <a href="mailto:toobaconnects@gmail.com">✉️ toobaconnects@gmail.com</a>
+              <span>📍 Derby, UK</span>
+              <span>🎤 Speaking • Workshops • Community Events</span>
+            </div>
+            <a class="direct-email" href="mailto:toobaconnects@gmail.com?subject=Booking%20enquiry%20for%20Tooba">Prefer to email directly? →</a>
+          </div>
+
+          <form id="bookingForm">
+            <div class="field">
+              <label for="name">Your Name *</label>
+              <input id="name" name="name" required placeholder="Enter your name">
+            </div>
+            <div class="field">
+              <label for="email">Email Address *</label>
+              <input id="email" name="email" type="email" required placeholder="Enter your email">
+            </div>
+
+            <div class="field full">
+              <label for="organisation">Event / Organisation *</label>
+              <input id="organisation" name="organisation" required placeholder="Enter organisation or event name">
+            </div>
+
+            <div class="field">
+              <label for="eventType">Event Type *</label>
+              <select id="eventType" name="eventType" required>
+                <option value="">Select an option</option>
+                <option>Speaking Engagement</option>
+                <option>Workshop</option>
+                <option>Community Event</option>
+                <option>Panel / Q&A</option>
+                <option>Other</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="date">Preferred Date *</label>
+              <input id="date" name="date" type="date" required>
+            </div>
+
+            <div class="field">
+              <label for="time">Preferred Time</label>
+              <input id="time" name="time" type="time">
+            </div>
+
+            <div class="field">
+              <label for="audience">Approx. Audience Size</label>
+              <input id="audience" name="audience" type="number" min="1" placeholder="e.g. 50">
+            </div>
+
+            <div class="field full">
+              <label for="location">Event Location *</label>
+              <input id="location" name="location" required placeholder="Venue, town/city or online">
+            </div>
+
+            <div class="field full">
+              <label for="message">What would you like Tooba to support with? *</label>
+              <textarea id="message" name="message" required placeholder="Tell us about your event, audience, aims and what you would like people to take away..."></textarea>
+            </div>
+
+            <button class="btn btn-primary submit" type="submit">Send Booking Request</button>
+            <p class="form-note">This form uses your device’s email app. Nothing is stored on this website.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <span>© <span id="year"></span> Tooba Connects. All rights reserved.</span>
+      <div class="socials" aria-label="Social links">
+        <a href="#" aria-label="Instagram">◎</a>
+        <a href="#" aria-label="LinkedIn">in</a>
+      </div>
+    </div>
+  </footer>
+
+  <a class="mobile-book" href="#contact">Book Tooba</a>
+
+  <script>
+    const menuBtn = document.querySelector('.menu-btn');
+    const nav = document.getElementById('mainNav');
+
+    menuBtn.addEventListener('click', () => {
+      const isOpen = nav.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      nav.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded','false');
+    }));
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    document.querySelectorAll('[data-event]').forEach(link => {
+      link.addEventListener('click', () => {
+        const select = document.getElementById('eventType');
+        select.value = link.dataset.event;
+      });
+    });
+
+    const bookingForm = document.getElementById('bookingForm');
+
+    bookingForm.addEventListener('submit', function(e){
+      e.preventDefault();
+
+      if (!bookingForm.checkValidity()) {
+        bookingForm.reportValidity();
+        return;
+      }
+
+      const value = id => document.getElementById(id).value.trim();
+
+      const name = value('name');
+      const email = value('email');
+      const organisation = value('organisation');
+      const eventType = value('eventType');
+      const dateRaw = value('date');
+      const time = value('time') || 'Not specified';
+      const audience = value('audience') || 'Not specified';
+      const location = value('location');
+      const message = value('message');
+
+      let prettyDate = dateRaw;
+      if (dateRaw) {
+        const [y,m,d] = dateRaw.split('-');
+        prettyDate = `${d}/${m}/${y}`;
+      }
+
+      const subject = `Booking enquiry: ${eventType} — ${organisation}`;
+      const body =
+`Hello Tooba,
+
+I would like to enquire about booking you.
+
+Name: ${name}
+Email: ${email}
+Organisation / Event: ${organisation}
+Event type: ${eventType}
+Preferred date: ${prettyDate}
+Preferred time: ${time}
+Event location: ${location}
+Approx. audience size: ${audience}
+
+What we would like support with:
+${message}
+
+Please let me know your availability and any further information you need.
+
+Kind regards,
+${name}`;
+
+      window.location.href =
+        `mailto:toobaconnects@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    });
+  </script>
+</body>
+</html>
