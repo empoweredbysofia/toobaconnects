@@ -379,7 +379,11 @@
             <a class="direct-email" href="mailto:toobaconnects@gmail.com?subject=Booking%20enquiry%20for%20Tooba">Prefer to email directly? →</a>
           </div>
 
-          <form id="bookingForm">
+          <form id="bookingForm" action="https://formsubmit.co/toobaconnects@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="New Tooba Connects booking enquiry">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
             <div class="field">
               <label for="name">Your Name *</label>
               <input id="name" name="name" required placeholder="Enter your name">
@@ -432,7 +436,7 @@
             </div>
 
             <button class="btn btn-primary submit" type="submit">Send Booking Request</button>
-            <p class="form-note">Submitting prepares a complete email to Tooba Connects in your email app. If your device does not open it, use the direct email link alongside the form.</p>
+            <p class="form-note">Your enquiry will be sent directly to Tooba Connects. You do not need to open your email app.</p>
           </form>
         </div>
       </div>
@@ -473,60 +477,6 @@
       });
     });
 
-    const bookingForm = document.getElementById('bookingForm');
-
-    bookingForm.addEventListener('submit', function(e){
-      e.preventDefault();
-
-      if (!bookingForm.checkValidity()) {
-        bookingForm.reportValidity();
-        return;
-      }
-
-      const value = id => document.getElementById(id).value.trim();
-
-      const name = value('name');
-      const email = value('email');
-      const organisation = value('organisation');
-      const eventType = value('eventType');
-      const dateRaw = value('date');
-      const time = value('time') || 'Not specified';
-      const audience = value('audience') || 'Not specified';
-      const location = value('location');
-      const message = value('message');
-
-      let prettyDate = dateRaw;
-      if (dateRaw) {
-        const [y,m,d] = dateRaw.split('-');
-        prettyDate = `${d}/${m}/${y}`;
-      }
-
-      const subject = `Booking enquiry: ${eventType} — ${organisation}`;
-      const body =
-`Hello Tooba,
-
-I would like to enquire about booking you.
-
-Name: ${name}
-Email: ${email}
-Organisation / Event: ${organisation}
-Event type: ${eventType}
-Preferred date: ${prettyDate}
-Preferred time: ${time}
-Event location: ${location}
-Approx. audience size: ${audience}
-
-What we would like support with:
-${message}
-
-Please let me know your availability and any further information you need.
-
-Kind regards,
-${name}`;
-
-      window.location.href =
-        `mailto:toobaconnects@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    });
   </script>
 </body>
 </html>
